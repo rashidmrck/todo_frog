@@ -1,12 +1,16 @@
 import 'package:todo_mrck/interfaces/todo_interface.dart';
 import 'package:todo_mrck/model/todo_model.dart';
+import 'package:uuid/uuid.dart';
 
 class TodoService implements TodoInterface {
   final _savedTodos = <String, Todo>{};
   @override
   Future<Todo> addTodo(Todo todo) {
     // TODO: implement addTodo
-    throw UnimplementedError();
+    const uuid = Uuid();
+    final id = uuid.v4();
+    _savedTodos[id] = todo;
+    return Future.value(todo);
   }
 
   @override
@@ -22,9 +26,8 @@ class TodoService implements TodoInterface {
   }
 
   @override
-  Future<List<Todo>> getTodos() {
-    // TODO: implement getTodos
-    throw UnimplementedError();
+  Future<Map<String, Todo>> getTodos() {
+    return Future.value(_savedTodos);
   }
 
   @override

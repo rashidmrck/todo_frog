@@ -10,10 +10,18 @@ import 'package:todo_mrck/model/todo_model.dart';
 /// Implementations of this class are responsible for implementing these methods
 /// to provide the actual functionality for managing todo items.
 abstract class TodoInterface {
-  /// Retrieves all the todo items.
+  /// Adds a new todo item.
   ///
-  /// Returns a [Future] that completes with a list of [Todo] objects.
-  Future<List<Todo>> getTodos();
+  /// The [todo] parameter represents the todo item to be added.
+  /// Returns a [Future] that completes with the added [Todo] object.
+  Future<Todo> addTodo(Todo todo);
+
+  /// Deletes a todo item.
+  ///
+  /// The [id] parameter represents the unique identifier of the todo
+  /// item to be deleted.
+  /// Returns a [Future] that completes with `void`.
+  Future<void> deleteTodo(String id);
 
   /// Retrieves a todo item by its unique identifier.
   ///
@@ -22,11 +30,10 @@ abstract class TodoInterface {
   /// otherwise null.
   Future<Todo?> getTodoById(String id);
 
-  /// Adds a new todo item.
+  /// Retrieves all the todo items.
   ///
-  /// The [todo] parameter represents the todo item to be added.
-  /// Returns a [Future] that completes with the added [Todo] object.
-  Future<Todo> addTodo(Todo todo);
+  /// Returns a [Future] that completes with a list of [Todo] objects.
+  Future<Map<String, Todo>> getTodos();
 
   /// Updates an existing todo item.
   ///
@@ -35,11 +42,4 @@ abstract class TodoInterface {
   /// item to be updated.
   /// Returns a [Future] that completes with the updated [Todo] object.
   Future<Todo> updateTodo(String id, Todo todo);
-
-  /// Deletes a todo item.
-  ///
-  /// The [id] parameter represents the unique identifier of the todo
-  /// item to be deleted.
-  /// Returns a [Future] that completes with `void`.
-  Future<void> deleteTodo(String id);
 }

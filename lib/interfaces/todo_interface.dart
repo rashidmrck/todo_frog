@@ -41,5 +41,5 @@ abstract class TodoInterface {
   /// The [id] parameter represents the unique identifier of the todo
   /// item to be updated.
   /// Returns a [Future] that completes with the updated [Todo] object.
-  Future<Todo> updateTodo(String id, Todo todo);
+  Future<Todo?> updateTodo(String id, Todo todo);
 }
